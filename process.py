@@ -24,13 +24,13 @@ def avgerage(data):
 		out.append([run[0], statistics.mean(run[1])])
 	return out
 
-def normalizer(data):
-	"""return normalized data from 0 to 1"""
-	pass
+def normalizer(data, day):
+	"""return normalized data from 0 to 1 at day 'day'"""
+	total = sum([x[1][day-1] for x in data])
+	out = []
+	for run in data:
+		out.append([run[0], run[1][day-1] / total])
+	return out
 
-def main():
-	"""handle main"""
-	data = reader()
-	avg_data = avgerage(data)
+data = reader()
 
-main()
