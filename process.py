@@ -22,7 +22,7 @@ def avgerage(data):
     out = []
     for run in data:
         out.append([run[0], statistics.mean(run[1])])
-        return out
+    return out
 
 def normalizer(data):
     """return normalized data from 0 to 1"""
