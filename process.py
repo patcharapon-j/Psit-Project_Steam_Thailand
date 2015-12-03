@@ -24,9 +24,13 @@ def avgerage(data):
 		out.append([run[0], statistics.mean(run[1])])
 	return out
 
+def normalizer(data):
+	"""return normalized data from 0 to 1"""
+	pass
+
 def main():
 	"""handle main"""
 	data = reader()
-	avgerage(data)
+	avg_data = avgerage(data)
 
 main()
