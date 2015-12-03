@@ -26,11 +26,19 @@ def avgerage():
     return out
 
 def normalizer(day):
-	"""return normalized data from 0 to 1 at day 'day'"""
+    """return normalized data from 0 to 1 at day 'day'"""
     data = reader()
-	total = sum([x[1][day-1] for x in data])
-	out = []
-	for run in data:
-		out.append([run[0], run[1][day-1] / total])
-	return out
+    total = sum([x[1][day-1] for x in data])
+    out = []
+    for run in data:
+        out.append([run[0], run[1][day-1] / total])
+    return out
 
+def all_normalizer():
+    """return normalize data of average"""
+    data = avgerage()
+    total = sum([x[1] for x in data])
+    out = []
+    for run in data:
+        out.append([run[0], run[1]/total])
+    return out
