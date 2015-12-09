@@ -13,11 +13,24 @@ for run in range(len(data2[0])):
         temp.append(data2[run2][run])
     data3.append(temp)
 data = [
-    go.Heatmap(
+    go.Surface(
         z=data3,
         x=games,
         y=[str(x) for x in range(1, 61)]
     )
 ]
-plot_url = py.plot(data, filename='Steam-heatmap')
+layout = go.Layout(
+    title='Steam Thailand Playtime 2015 (Aug - Sep)',
+    autosize=False,
+    width=500,
+    height=500,
+    margin=dict(
+        l=65,
+        r=50,
+        b=65,
+        t=90
+    )
+)
+fig = go.Figure(data=data, layout=layout)
+plot_url = py.plot(fig, filename='Steam-heatmap')
 
