@@ -3,8 +3,9 @@ import process as pr
 import plotly.plotly as py
 import plotly.graph_objs as go
 data2 = pr.reader()
+data2 = data2[2:-7] + data2[-8:-2]
 games = [data2[x][0] for x in range(len(data2))]
-data2 = [run[1] for run in data2[2:-1]]
+data2 = [run[1] for run in data2]
 data3 = []
 for run in range(len(data2[0])):
     temp = []
@@ -13,8 +14,8 @@ for run in range(len(data2[0])):
     data3.append(temp)
 data = [
     go.Heatmap(
-        z=data3
-        x=games[2:-1]
+        z=data3,
+        x=games,
         y=[str(x) for x in range(1, 61)]
     )
 ]
