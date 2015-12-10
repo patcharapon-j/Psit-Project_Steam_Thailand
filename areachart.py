@@ -15,19 +15,33 @@ axis_y = [[information.reader()[num][1][i] for i in range(60)] for num in range(
 ### 	axis_y.append([information.reader()[num][1][i] for i in range(60)])
 
 #trace data
-trace0 = go.Scatter(
-	x = axis_x,
-	y = axis_y[0],
-	text=str(axis_y[0]),
-    hoverinfo='x+text',
-    mode='lines',
-    line=dict(
-        width=0.5
-    ),
-    fill='tonexty'
+trace = [None for _ in range(28)]
+
+for num in range(28):
+	trace[num] = go.Scatter(
+		x = axis_x,
+		y = axis_y[num],
+		hoverinfo = 'name+y+x', #show information when mouse is over
+		name = information.reader()[num][0],
+	    mode ='lines',
+	    line = dict(
+	        width = 0.5
+	    ),
+	    fill='tonexty'
+	)
+
+
+data = [trace[num] for num in range(28)]
+layout = go.Layout(
+	showlegend = True,
+	title = 'Steamspy Data',
+	xaxis=dict(
+		title = 'Days'
+	),
+	yaxis = dict(
+		title = 'Minute'
+	)
 )
 
-data = [trace0]
-
-fig = go.Figure(data=data)
-plot_url=py.plot(fig)
+fig = go.Figure(data=data, layout=layout)
+plot_url=py.plot(fig, filename='stacked-area-plot')
