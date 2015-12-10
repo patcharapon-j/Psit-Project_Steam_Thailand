@@ -42,3 +42,8 @@ def all_normalizer():
     for run in data:
         out.append([run[0], run[1]/total])
     return out
+
+def request_day(day):
+    """return list game playtime in each day"""
+    data = reader()
+    return [x[0], x[1][day-1] for x in data]
