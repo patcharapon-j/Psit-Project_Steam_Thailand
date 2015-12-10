@@ -24,7 +24,6 @@ for num in range(28):
 	trace[num] = go.Scatter(
 		x = axis_x,
 		y = y_stack[num],
-		text = axis_y[num],
 		hoverinfo = 'name+x', #show information when mouse is over
 		name = information.reader()[num][0],
 	    mode ='lines',
